@@ -20,7 +20,7 @@ All usage of the software is governed by our [End-User License Agreement (EULA)]
 
 ## 🐳 Docker and Installation
 
-Refer to the https://bartis.dev section for the latest Docker image tags and installation instructions.
+Refer to the <https://bartis.dev/docs> section for the latest Docker image tags and installation instructions.
 
 ### Links
 

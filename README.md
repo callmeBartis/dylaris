@@ -19,7 +19,7 @@ Dylaris provides a high-performance, protocol-aware reverse tunneling system wri
 
 ---
 
-## ⚡ Module 1: The Network Layer (Tunneling)
+## ⚡ Module 1: The Network Layer (Dylaris Hub)
 
 The current release focuses on intelligent ingress traffic management. Unlike generic TCP tunnels, Dylaris understands the application layer.
 
@@ -28,6 +28,7 @@ The current release focuses on intelligent ingress traffic management. Unlike ge
     * **Minecraft:** Parses Handshake packet ID `0x00` to extract the target hostname.
     * **HTTPS:** Parses TLS Client Hello for SNI extraction.
     * **HTTP:** Parses Host Headers.
+    * more services in the future
 * **Multiplexing:** Utilizes `Hashicorp/Yamux` to handle concurrent streams over a single persistent connection.
 * **Scalability:** Supports both a **Push Mode** (Direct Hub-to-Gate) and a **Redis Mode** (Cluster Discovery) for high availability.
 
@@ -40,11 +41,12 @@ The system is composed of three standalone binaries:
     * Manages routes, licenses, and configuration distribution.
     * Includes an embedded Link agent for self-tunneling.
     * *Tech:* Go Fiber, GORM (SQLite/Redis), React.
+    * **Hub includes an internal link**
 
 2.  **The Gate (Ingress/Edge)**
     * Runs on a public VPS (the "Shield").
     * Accepts traffic on ports 80, 443, and 25565.
-    * Routes traffic dynamically based on in-memory rules.
+    * Routes traffic dynamically based on in-memory rules or Redis.
     * *Tech:* Go, Redis Client.
 
 3.  **The Link (Agent)**
@@ -59,10 +61,12 @@ The system is composed of three standalone binaries:
 Dylaris is evolving. The Networking Layer is just the start.
 
 - [x] **Network Module** (Reverse Tunneling, SNI/Handshake Routing)
-- [ ] **Instance Manager** (Docker/Process management for MC Servers)
-- [ ] **File Manager** (Web-based file access)
-- [ ] **Backup System** (Automated S3/Local backups)
+- [X] **Instance Manager** (Docker/Process management for MC Servers)
+- [X] **File Manager** (Web-based file access)
+- [ ] **User Management** (User & permission system)
+- [ ] **Backup System** (Online/Local backups)
 - [ ] **Plugin/Mod Manager** (One-click installs)
+- [ ] **Modpack Support for Servers**
 
 ---
 
@@ -70,22 +74,22 @@ Dylaris is evolving. The Networking Layer is just the start.
 
 To deploy the Dylaris Network Layer:
 
-1.  **Download** the binaries from the [Releases Page](#) or our [Website](https://bartisd.dev).
+1.  **Deploy the Hub** via Docker, read the Docs [Website](https://bartis.dev).
 2.  **Deploy the Gate** on a public VPS with a static IP.
 3.  **Run the Hub** on your local machine to access the dashboard.
 4.  **Connect** your services using the Link Agent.
 
-For detailed documentation, please visit **[docs.bartisd.dev](https://bartisd.dev)**.
+For detailed documentation, please visit **[Docs of Bartis.dev](https://bartisd.dev/docs)**.
 
 ---
 
 ## 🐛 Issue Tracking
 
 This repository serves as the central issue tracker for the Dylaris ecosystem.
-If you encounter bugs with the Hub, Gate, or Link, please open an issue here using the appropriate template.
+If you encounter bugs with the Hub, Gate, or Link, please open an issue here.
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ in Go by Bartis.</sub>
+  <sub>Built with ❤️ in Go, NextJS & TailwindCSS by Bartis.</sub>
 </div>
